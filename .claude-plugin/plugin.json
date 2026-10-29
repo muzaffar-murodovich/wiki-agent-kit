@@ -1,0 +1,31 @@
+{
+  "name": "wikikit",
+  "displayName": "Wiki Agent Kit",
+  "version": "0.1.0",
+  "description": "Agentic toolkit for Wikimedians: translate articles between any two wikis with links, categories, templates and references intact; find missing articles; draft Wikidata statements; port templates; verify citations. Read-only by design: you draft, a human publishes.",
+  "author": { "name": "Muzaffar Murodovich", "url": "https://github.com/muzaffar-murodovich" },
+  "homepage": "https://github.com/muzaffar-murodovich/wiki-agent-kit",
+  "repository": "https://github.com/muzaffar-murodovich/wiki-agent-kit",
+  "license": "MIT",
+  "keywords": ["wikipedia", "wikidata", "wikimedia", "translation", "small-languages", "commons"],
+  "userConfig": {
+    "contact": {
+      "type": "string",
+      "title": "Contact for the Wikimedia User-Agent",
+      "description": "Your email or wiki user page. Wikimedia's User-Agent policy requires automated clients to be contactable.",
+      "sensitive": false
+    },
+    "workdir": {
+      "type": "directory",
+      "title": "Work directory",
+      "description": "Where translation jobs, worklists and your own language profiles are kept (default: ~/WikiWork).",
+      "sensitive": false
+    },
+    "typesafe_api_key": {
+      "type": "string",
+      "title": "TypeSafe API key (optional)",
+      "description": "Enables Jev for fast, calibrated citation checks and bulk screening. Leave empty to have Claude do these itself.",
+      "sensitive": true
+    }
+  }
+}

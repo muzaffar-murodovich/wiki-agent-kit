@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "wikikit": {
+      "command": "uv",
+      "args": ["run", "--frozen", "--project", "${CLAUDE_PLUGIN_ROOT}", "--quiet", "python", "-m", "wikikit.mcp_server"],
+      "env": {
+        "PYTHONUTF8": "1",
+        "WIKIKIT_CONTACT_OPTION": "${user_config.contact}",
+        "WIKIKIT_HOME_OPTION": "${user_config.workdir}",
+        "TYPESAFE_API_KEY_OPTION": "${user_config.typesafe_api_key}"
+      }
+    }
+  }
+}

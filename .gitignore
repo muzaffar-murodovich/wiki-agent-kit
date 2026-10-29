@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# local only
+.claude/settings.local.json
+research/
+docs/HACKATHON-APPLICATION.md
+docs/IDEAS.md
+.DS_Store

@@ -1,0 +1,12 @@
+{
+  "name": "wiki-agent-kit",
+  "description": "Claude Code plugins for Wikimedia editors",
+  "owner": { "name": "Muzaffar Murodovich", "url": "https://github.com/muzaffar-murodovich" },
+  "plugins": [
+    {
+      "name": "wikikit",
+      "source": "./",
+      "description": "Translate, find, verify and port across Wikimedia projects — read-only, human publishes."
+    }
+  ]
+}

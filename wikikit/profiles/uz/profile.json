@@ -1,0 +1,25 @@
+{
+  "lang": "uz",
+  "name": "Oʻzbekcha (uz.wikipedia.org)",
+  "family": "wikipedia",
+  "namespaces": {
+    "category": "Turkum",
+    "template": "Andoza",
+    "file": "Fayl"
+  },
+  "template_fallbacks": {
+    "infobox person": "Shaxs bilgiqutisi",
+    "infobox place": "Joyni bilgiqutisi",
+    "infobox country": "Davlatni bilgiqutisi"
+  },
+  "unmapped_templates": "drop",
+  "trim": {
+    "threshold_bytes": 10000,
+    "min_lead_bytes": 400
+  },
+  "attribution": {
+    "edit_summary": "[[:{source_lang}:{title}]] maqolasidan tarjima ([[:{source_lang}:Special:PermanentLink/{revid}]]); mashina yordamida tarjima qilinib, inson tomonidan tekshirildi",
+    "edit_summary_en": "Translated from [[:{source_lang}:{title}]] ([[:{source_lang}:Special:PermanentLink/{revid}|revision {revid}]]); machine-assisted, reviewed by a human"
+  },
+  "notes": "Apostrophes (ʻ/ʼ vs ‘/’) are deliberately NOT normalised: uz.wiki's Vikifikator script does that on save."
+}

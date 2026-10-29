@@ -1,0 +1,20 @@
+{
+  "lang": "en",
+  "name": "English (en.wikipedia.org)",
+  "family": "wikipedia",
+  "namespaces": {
+    "category": "Category",
+    "template": "Template",
+    "file": "File"
+  },
+  "unmapped_templates": "keep",
+  "source": {
+    "apparatus_heading": "^\\s*(?:references?|sources?|notes?|footnotes?|citations?|works\\s+cited|bibliography|further\\s+reading|external\\s+links)\\s*$",
+    "maintenance_category": "(?i)^(?:Category:)?(?:All |Articles |CS1 |Webarchive |Wikipedia |Use (?:dmy|mdy) dates|Short description|Pages |Harv and Sfn|Commons category|Official website|Coordinates on Wikidata|.*\\b(?:stubs?|births|deaths)$|\\d{1,4}(?:s|th[- ]century)? )"
+  },
+  "attribution": {
+    "edit_summary": "Translated from [[:{source_lang}:{title}]] ([[:{source_lang}:Special:PermanentLink/{revid}|revision {revid}]]); machine-assisted, reviewed by a human",
+    "disclosure_template": "{{LLM-assisted translation}}",
+    "note": "WP:LLMT (guideline, 2026-02-10): machine-assisted translations into English go to draft or user space tagged {{LLM-assisted translation}} until a bilingual editor has reviewed them."
+  }
+}

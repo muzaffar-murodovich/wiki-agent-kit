@@ -1,0 +1,17 @@
+{
+  "description": "wiki-agent-kit safety guard: no tool call may publish to a Wikimedia wiki",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell|WebFetch|mcp__.*(claude-in-chrome|Claude_Browser).*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run --no-project --quiet python \"${CLAUDE_PLUGIN_ROOT}/hooks/guard.py\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
