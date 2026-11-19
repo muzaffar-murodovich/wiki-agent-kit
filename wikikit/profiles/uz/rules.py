@@ -75,9 +75,10 @@ class RegexPatterns:
 
     # A ref that ends a sentence and has no mark. '[' is excluded here and
     # handled by REF_BEFORE_CAPITALISED_LINK, because a lowercase link
-    # continues the sentence.
-    REF_NEEDS_PERIOD = r'(</ref>)(\s+)(?![.,;!?<{\[a-zʼ‘’\'])'
-    SELF_CLOSING_REF_NEEDS_PERIOD = r'(/\s*>)(\s+)(?![.,;!?<{\[a-zʼ‘’\'])'
+    # continues the sentence. '|', '!' and '}' are excluded because a ref
+    # there ends a table cell or a template parameter, not a sentence.
+    REF_NEEDS_PERIOD = r'(</ref>)(\s+)(?![.,;!?<{}|\[a-zʼ‘’\'])'
+    SELF_CLOSING_REF_NEEDS_PERIOD = r'(/\s*>)(\s+)(?![.,;!?<{}|\[a-zʼ‘’\'])'
 
     # </ref>.. -> </ref>.
     REPEATED_PUNCT_AFTER_REF = r'(' + REF_TAG_END + r')([.,;!?])\2+'
@@ -410,7 +411,8 @@ def _chain_closes_sentence(rest: str) -> bool:
     if not after:
         # End of the paragraph or of the document.
         return True
-    if after[0] in '.,;!?<{':
+    if after[0] in '.,;!?<{}|':
+        # '|' and '}' close a table cell or a template parameter.
         return False
     if after.startswith('[['):
         visible = _VISIBLE_LINK_TEXT.match(after)

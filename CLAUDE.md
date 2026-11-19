@@ -40,7 +40,7 @@ This is a Claude Code plugin (`.claude-plugin/`, `skills/`, `agents/`, `hooks/`,
 
 ```bash
 uv sync --extra dev
-uv run pytest                      # 261 tests, no network
+uv run pytest                      # 269 tests, no network
 uv run wikikit tools               # list the MCP tools
 uv run wikikit translate "Ibn Jurayj" --to uz   # real network, writes ~/WikiWork/jobs/
 claude --plugin-dir .              # try the plugin

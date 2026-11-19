@@ -102,6 +102,33 @@ class TestFixPunctuationWithRefs:
         result = fix_punctuation_with_refs("edi<ref>M</ref> [[Buxoro]]da tugʻilgan")
         assert result == "edi<ref>M</ref>. [[Buxoro]]da tugʻilgan"
 
+    # A ref that ends a table cell or a template parameter ends a value,
+    # not a sentence: no period may be added (issue #1).
+
+    def test_no_period_after_ref_ending_table_cell(self):
+        text = "{|\n| 1995<ref>a</ref>\n| next\n|-\n| 1996<ref>b</ref>\n|}"
+        assert fix_punctuation_with_refs(text) == text
+
+    def test_no_period_after_self_closing_ref_ending_table_cell(self):
+        text = '{|\n| 1995<ref name="a" />\n| next\n|}'
+        assert fix_punctuation_with_refs(text) == text
+
+    def test_no_period_after_ref_ending_header_cell(self):
+        text = "{|\n! Yil<ref>a</ref>\n! Joy\n|}"
+        assert fix_punctuation_with_refs(text) == text
+
+    def test_no_period_after_ref_ending_template_param(self):
+        text = "{{Shablon\n| yil = 1995<ref>a</ref>\n| joy = X<ref>b</ref>\n}}"
+        assert fix_punctuation_with_refs(text) == text
+
+    def test_no_period_after_ref_before_inline_template_close(self):
+        text = "{{Shablon|yil=1995<ref>a</ref> }}"
+        assert fix_punctuation_with_refs(text) == text
+
+    def test_still_adds_period_after_ref_ending_prose_sentence(self):
+        result = fix_punctuation_with_refs("Matn<ref>a</ref> Keyingi gap.")
+        assert result == "Matn<ref>a</ref>. Keyingi gap."
+
 
 # ── fix_cite_book_script_title ────────────────────────────────────────────────
 
@@ -242,6 +269,14 @@ class TestFixPunctuationWithSfn:
         # A lowercase word means the sentence continues.
         result = fix_punctuation_with_sfn("matn davom etadi{{sfn|A}} va yana.")
         assert result == "matn davom etadi{{sfn|A}} va yana."
+
+    def test_no_period_after_sfn_ending_table_cell(self):
+        text = "{|\n| 1995{{sfn|A|2020}}\n| next\n|}"
+        assert fix_punctuation_with_sfn(text) == text
+
+    def test_no_period_after_sfn_ending_template_param(self):
+        text = "{{Shablon\n| yil = 1995{{sfn|A|2020}}\n}}"
+        assert fix_punctuation_with_sfn(text) == text
 
     def test_missing_period_still_added_before_capital(self):
         result = fix_punctuation_with_sfn("matn tugadi{{sfn|A}} Yangi jumla.")
